@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Documentación de API REST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<h:form>
+    <header class="bg-primary text-white p-4">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3">Documentación de API REST</h1>
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><h:link value="Inicio" outcome="index" class="nav-link text-white"/></li>
+                        <li class="nav-item"><h:link value="Documentación de API" outcome="documentation" class="nav-link text-white"/></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <h2>Documentación de API</h2>
+        <h5 class=""><i>URL: </i><strong>http://localhost:8080/dwf-teorico-api/api</strong></h5>
+        <div class="accordion" id="api-docs">
+            <!-- GET all medicines -->
+            <div class="card">
+                <div class="card-header" id="headingGetAll">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGetAll" aria-expanded="true" aria-controls="collapseGetAll">
+                            GET /medicines
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseGetAll" class="collapse show" aria-labelledby="headingGetAll" data-parent="#api-docs">
+                    <div class="card-body">
+                        <p><strong>Descripción:</strong> Obtiene una lista de todos los medicamentos.</p>
+                        <p><strong>Respuesta:</strong></p>
+                        <pre>
+[
+    {
+        "id": "1",
+        "nombre": "Aspirina",
+        "cantidad": 100,
+        "precio": 12.50
+    },
+    {
+        "id": "2",
+        "nombre": "Ibuprofeno",
+        "cantidad": 200,
+        "precio": 8.75
+    }
+]
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GET medicine by ID -->
+            <div class="card">
+                <div class="card-header" id="headingGetById">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseGetById" aria-expanded="false" aria-controls="collapseGetById">
+                            GET /medicines/{id}
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseGetById" class="collapse" aria-labelledby="headingGetById" data-parent="#api-docs">
+                    <div class="card-body">
+                        <p><strong>Descripción:</strong> Obtiene los detalles de un medicamento específico por su ID.</p>
+                        <p><strong>Respuesta:</strong></p>
+                        <pre>
+{
+    "id": "1",
+    "nombre": "Aspirina",
+    "cantidad": 100,
+    "precio": 12.50
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POST create new medicine -->
+            <div class="card">
+                <div class="card-header" id="headingPost">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePost" aria-expanded="false" aria-controls="collapsePost">
+                            POST /medicines/create
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapsePost" class="collapse" aria-labelledby="headingPost" data-parent="#api-docs">
+                    <div class="card-body">
+                        <p><strong>Descripción:</strong> Crea un nuevo medicamento.</p>
+                        <p><strong>Datos de entrada:</strong></p>
+                        <pre>
+{
+    "nombre": "Paracetamol",
+    "cantidad": 150,
+    "precio": 5.00
+}
+                        </pre>
+                        <p><strong>Respuesta:</strong></p>
+                        <pre>
+{
+    "message": "Medicamento creado exitosamente"
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PUT update existing medicine -->
+            <div class="card">
+                <div class="card-header" id="headingPut">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePut" aria-expanded="false" aria-controls="collapsePut">
+                            PUT /medicines/update/{id}
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapsePut" class="collapse" aria-labelledby="headingPut" data-parent="#api-docs">
+                    <div class="card-body">
+                        <p><strong>Descripción:</strong> Actualiza un medicamento existente por su ID.</p>
+                        <p><strong>Datos de entrada:</strong></p>
+                        <pre>
+{
+    "nombre": "Paracetamol",
+    "cantidad": 200,
+    "precio": 6.00
+}
+                        </pre>
+                        <p><strong>Respuesta:</strong></p>
+                        <pre>
+{
+    "message": "Medicamento actualizado exitosamente"
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DELETE medicine by ID -->
+            <div class="card">
+                <div class="card-header" id="headingDelete">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseDelete" aria-expanded="false" aria-controls="collapseDelete">
+                            DELETE /medicines/delete/{id}
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseDelete" class="collapse" aria-labelledby="headingDelete" data-parent="#api-docs">
+                    <div class="card-body">
+                        <p><strong>Descripción:</strong> Elimina un medicamento por su ID.</p>
+                        <p><strong>Respuesta:</strong></p>
+                        <pre>
+{
+    "message": "Medicamento eliminado exitosamente"
+}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>2024 Contoso Farmacéutica. Todos los derechos reservados.</p>
+    </footer>
+</h:form>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
